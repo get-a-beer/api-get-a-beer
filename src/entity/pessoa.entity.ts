@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column , OneToOne, JoinColumn} from 'typeorm';
+import { Cliente } from './cliente.entity'
+import { Endereco } from './endereco.entity'
+import { Usuario } from './usuario.entity'
 
 
 @Entity()
@@ -8,12 +11,24 @@ export class Pessoa {
     id: number;
 
     @Column()
-    nome: string;
+    idExterno: string;
 
     @Column()
-    telefone: string;
+    cpf: string;
 
     @Column()
-    email: string;
+    dataNascimento: Date;
+
+    @OneToOne(type => Cliente, cliente => cliente.pessoa)
+    @JoinColumn()
+    cliente: Cliente;
+
+    @OneToOne(type => Endereco, endereco => endereco.pessoa)
+    @JoinColumn()
+    endereco: Endereco;
+
+    @OneToOne(type => Usuario, usuario => usuario.pessoa)
+    @JoinColumn()
+    usuario: Usuario;
 
 }
