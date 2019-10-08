@@ -3,11 +3,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const db_type = 'postgres';
-const db_host = process.env.HOST;
-const db_port: number = parseInt( process.env.PORT ); 
-const db_username = process.env.USER;
-const db_password = process.env.PASSWORD ;
-const db_database = process.env.SCHEMA;
+const db_host = process.env.DB_HOST;
+const db_port: number = parseInt( process.env.DB_PORT ); 
+const db_username = process.env.DB_USER;
+const db_password = process.env.DB_PASSWORD ;
+const db_database = process.env.DB_SCHEMA;
 const orm_sync = true;
 
 export class DataBaseConfig {
