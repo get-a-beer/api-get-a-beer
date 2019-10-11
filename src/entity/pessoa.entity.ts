@@ -1,23 +1,30 @@
-import { Entity, PrimaryGeneratedColumn, Column , OneToOne, JoinColumn} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column , OneToOne, JoinColumn, BaseEntity} from 'typeorm';
 import { Cliente } from './cliente.entity'
 import { Endereco } from './endereco.entity'
 import { Usuario } from './usuario.entity'
+import { Cervejaria } from './cervejaria.entity'
+
 
 
 @Entity()
-export class Pessoa {
+export class Pessoa extends BaseEntity {
     
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    idExterno: string;
+    nome: String
+
 
     @Column()
-    cpf: string;
+    telefone: String
 
     @Column()
-    dataNascimento: Date;
+    email: String
+
+    @OneToOne(type => Cervejaria, cervejaria => cervejaria.pessoa)
+    @JoinColumn()
+    cervejaria: Cervejaria;
 
     @OneToOne(type => Cliente, cliente => cliente.pessoa)
     @JoinColumn()

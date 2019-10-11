@@ -1,16 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, BaseEntity } from 'typeorm';
+import { Pessoa } from './pessoa.entity'
 
 
 @Entity()
-export class Pessoa {
+export class Cervejaria extends BaseEntity {
     
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    nome: string;
-
-    @Column()
     cnpj: string;
 
+    @OneToOne(type => Pessoa, pessoa => pessoa.cervejaria)
+    @JoinColumn()
+    pessoa: Pessoa;
 }
