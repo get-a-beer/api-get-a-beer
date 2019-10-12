@@ -19,12 +19,6 @@ import {
     @Post('/pessoa')
     async createOne(@Res() res, @Body() body: any) {
       try {
-        console.log("EITA LELE")
-        
-        
-        
-
-
       } catch (err) {
         res.status(HttpStatus.BAD_GATEWAY).send(err);
       }

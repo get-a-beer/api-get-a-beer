@@ -11,9 +11,7 @@ export class ClienteService {
   async Create(body: any): Promise<Pessoa | any> {
     
     try {
-
       const {cpf, dataNascimento, pessoa} = body
-
       const cliente = new Cliente()
 
       cliente.cpf = cpf

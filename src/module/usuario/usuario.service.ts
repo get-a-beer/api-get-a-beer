@@ -25,4 +25,7 @@ export class UsuarioService {
     }
   }
 
+  async FindOne(usuario: string): Promise<Usuario>{   
+    return Usuario.findOne({where: {usuario}})
+  }
 }
