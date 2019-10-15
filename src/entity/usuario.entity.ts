@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column , OneToOne, JoinColumn, BaseEntity} from 'typeorm';
-import { Pessoa } from './pessoa.entity'
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 
 @Entity()
@@ -14,7 +13,4 @@ export class Usuario extends BaseEntity{
     @Column()
     senha: string;
 
-    @OneToOne(type => Pessoa, pessoa => pessoa.usuario)
-    @JoinColumn()
-    pessoa: Pessoa;
 }
