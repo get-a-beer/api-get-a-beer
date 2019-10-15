@@ -1,5 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
-import { Pessoa } from '../../entity/pessoa.entity';
+import { Injectable } from '@nestjs/common';
 import { Cervejaria } from '../../entity/cervejaria.entity';
 
 
@@ -8,15 +7,8 @@ import { Cervejaria } from '../../entity/cervejaria.entity';
 
 @Injectable()
 export class CervejariaService {
-  async Create(body: any): Promise<Pessoa | any> {
-    
+  async Create(cervejaria: Cervejaria): Promise<Cervejaria> { 
     try {
-      const {cnpj, pessoa} = body
-      const cervejaria = new Cervejaria()
-
-      cervejaria.cnpj = cnpj
-      cervejaria.pessoa = pessoa
-
       return Cervejaria.save(cervejaria)
     } catch (err) {
       throw new Error(

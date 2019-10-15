@@ -3,7 +3,7 @@ import { ApiModelProperty } from "@nestjs/swagger";
 import { IsDefined } from "class-validator";
 
 
-export class ClienteDTO extends PessoaDTO{
+export class CervejariaDTO extends PessoaDTO{
     
     @ApiModelProperty({ required: false, description: 'CNPJ' })
     @IsDefined()

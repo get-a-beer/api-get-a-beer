@@ -1,12 +1,10 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ClienteDTO } from 'src/dto/cliente.dto';
 import { Cliente } from 'src/entity/cliente.entity';
 import { Pessoa } from 'src/entity/pessoa.entity';
 import { Usuario } from 'src/entity/usuario.entity';
-import { PessoaService } from '../pessoa/pessoa.service';
-import { UsuarioService } from '../usuario/usuario.service';
 import { ClienteService } from './cliente.service';
-import {ApiOperation, ApiCreatedResponse, ApiImplicitBody} from '@nestjs/swagger'
 
 
 
@@ -20,7 +18,8 @@ import {ApiOperation, ApiCreatedResponse, ApiImplicitBody} from '@nestjs/swagger
       title: 'Cria cliente',
       description: 'Cria um novo cliente'
     })
-    @ApiCreatedResponse({
+    @ApiResponse({
+      status: 200,
       description: 'Um novo cliente foi criado com sucesso',
     })
 
