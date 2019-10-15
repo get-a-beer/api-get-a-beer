@@ -1,45 +1,51 @@
-import {
-    Get,
-    Controller,
-    Param,
-    Post,
-    Body,
-    Res,
-    HttpStatus,
-    Delete,
-    Query,
-  } from '@nestjs/common';
-
+import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { ClienteDTO } from 'src/dto/cliente.dto';
+import { Cliente } from 'src/entity/cliente.entity';
+import { Pessoa } from 'src/entity/pessoa.entity';
+import { Usuario } from 'src/entity/usuario.entity';
 import { PessoaService } from '../pessoa/pessoa.service';
+import { UsuarioService } from '../usuario/usuario.service';
 import { ClienteService } from './cliente.service';
-import {UsuarioService} from '../usuario/usuario.service'
+import {ApiOperation, ApiCreatedResponse, ApiImplicitBody} from '@nestjs/swagger'
 
-type clienteDTO = {
-  nome: string,
-  cpf: string,
-  dataNascimento: string,
-  email:string,
-  telefone: string
-  usuario: string
-  senha: string
-}
+
 
 
   @Controller()
   export class ClienteController {
-    constructor(private readonly pessoaService: PessoaService, private readonly clienteService: ClienteService,private readonly usuarioService: UsuarioService ) {}
+    constructor(private readonly clienteService: ClienteService) {}
   
     @Post('/cliente')
-    async createOne(@Res() res, @Body() body: clienteDTO) {
+    @ApiOperation({
+      title: 'Cria cliente',
+      description: 'Cria um novo cliente'
+    })
+    @ApiCreatedResponse({
+      description: 'Um novo cliente foi criado com sucesso',
+    })
+
+    async createOne(@Res() res, @Body() clienteDTO: ClienteDTO) {
       try {
+
+        const usuario = new Usuario();
+        usuario.senha = clienteDTO.senha;
+        usuario.usuario = clienteDTO.nomeUsuario;
         
-        const {cpf, dataNascimento, nome, email, telefone, usuario: nomeUsuario, senha} = body        
-        
-        const usuario = await this.usuarioService.Create({usuario: nomeUsuario, senha})
-        const pessoa = await this.pessoaService.Create({cpf, nome, email, telefone, usuario})
-        const cliente = await this.clienteService.Create({cpf, dataNascimento : new Date(dataNascimento), pessoa })
-        
-        res.status(HttpStatus.OK).json({"status": 200, data: cliente});
+        const pessoa = new Pessoa();
+        pessoa.usuario = usuario;
+        pessoa.email = clienteDTO.email;
+        pessoa.nome = clienteDTO.nome;
+        pessoa.telefone = clienteDTO.telefone;
+
+        const cliente = new Cliente();
+        cliente.pessoa = pessoa;
+        cliente.cpf = clienteDTO.cpf;
+        cliente.dataNascimento = new Date(clienteDTO.dataNascimento);
+
+      
+        const data = await this.clienteService.Create(cliente);
+  
+        res.status(HttpStatus.OK).json({data: data});
 
       } catch (err) {
         res.status(HttpStatus.BAD_GATEWAY).send(err);

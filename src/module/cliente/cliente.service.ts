@@ -3,9 +3,7 @@ import { Pessoa } from '../../entity/pessoa.entity';
 import { Cliente } from '../../entity/cliente.entity';
 
 
-
-
-
+/*
 @Injectable()
 export class ClienteService {
   async Create(body: any): Promise<Pessoa | any> {
@@ -20,6 +18,23 @@ export class ClienteService {
 
       return Cliente.save(cliente)
 
+    } catch (err) {
+      throw new Error(
+        `Erro ao cadastrar pessoa \n Erro: ${err.name}\n Mensagem: ${
+          err.message
+        }\n Os parametros estao certos?`,
+      );
+    }
+  }
+
+}
+*/
+@Injectable()
+export class ClienteService {
+  async Create(cliente: Cliente): Promise<Cliente> {
+    try {
+      return Cliente.save(cliente);
+    
     } catch (err) {
       throw new Error(
         `Erro ao cadastrar pessoa \n Erro: ${err.name}\n Mensagem: ${
