@@ -52,10 +52,12 @@ type clienteDTO = {
         const cliente = await this.clienteService.readOne(params.id)
         if (cliente) {
           res.status(HttpStatus.OK).send(cliente);
-        }
-        res
+        } else {
+          res
           .status(HttpStatus.NOT_FOUND)
           .json({"message":"Nenhum resultado encontrado!"});
+        }
+       
       } catch ( err) {
         res.status(HttpStatus.BAD_GATEWAY).send(err); 
       }

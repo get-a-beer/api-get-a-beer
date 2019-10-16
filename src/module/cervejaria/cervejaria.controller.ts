@@ -39,7 +39,6 @@ type cervejariaDTO = {
 
         const cervejaria = await this.cervejariaService.Create({pessoa, cnpj})
         
-        return cervejaria
         res.status(HttpStatus.OK).json({"status": 200, data: cervejaria});
 
       } catch (err) {
@@ -52,11 +51,12 @@ type cervejariaDTO = {
       try {
         const cervejaria = await this.cervejariaService.readOne(params.id)
         if (cervejaria) {
-          res.status(HttpStatus.OK).send(cervejaria);
-        }
+          res.status(HttpStatus.OK).send({data: cervejaria});
+        } else {
         res
           .status(HttpStatus.NOT_FOUND)
           .json({"message":"Nenhum resultado encontrado!"});
+        }
       } catch ( err) {
         res.status(HttpStatus.BAD_GATEWAY).send(err); 
       }

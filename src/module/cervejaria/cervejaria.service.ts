@@ -10,7 +10,7 @@ import { Cervejaria } from '../../entity/cervejaria.entity';
 export class CervejariaService {
 
   async readOne(id: number): Promise<Cervejaria>{
-    return await Cervejaria.findOne(
+    return  Cervejaria.findOne(
       { id: id }, 
       {
         join: {
@@ -22,7 +22,7 @@ export class CervejariaService {
   }
 
   async readAll(params): Promise<Cervejaria[] | any> {
-    return await Cervejaria.find({join: {
+    return  Cervejaria.find({join: {
       alias: 'cervejaria',
       leftJoinAndSelect: {
         pessoa: 'cervejaria.pessoa',
