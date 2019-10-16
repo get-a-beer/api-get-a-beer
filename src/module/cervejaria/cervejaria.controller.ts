@@ -1,9 +1,9 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
-import { CervejariaDTO } from 'src/dto/cervejaria.dto';
-import { Usuario } from 'src/entity/usuario.entity';
+import { CervejariaDTO } from '../../dto/cervejaria.dto';
+import { Usuario } from '../../entity/usuario.entity';
 import { CervejariaService } from './cervejaria.service';
-import { Cervejaria } from 'src/entity/cervejaria.entity';
-import { Pessoa } from 'src/entity/pessoa.entity';
+import { Cervejaria } from '../../entity/cervejaria.entity';
+import { Pessoa } from '../../entity/pessoa.entity';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller()
