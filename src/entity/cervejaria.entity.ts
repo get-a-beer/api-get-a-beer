@@ -11,7 +11,7 @@ export class Cervejaria extends BaseEntity {
     @Column()
     cnpj: string;
 
-    @OneToOne(type => Pessoa)
+    @OneToOne(type => Pessoa, { cascade: true })
     @JoinColumn()
     pessoa: Pessoa;
 }
