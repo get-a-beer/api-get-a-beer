@@ -8,6 +8,26 @@ import { Cliente } from '../../entity/cliente.entity';
 
 @Injectable()
 export class ClienteService {
+  async readOne(id: number): Promise<Cliente>{
+    return await Cliente.findOne(
+      { id: id }, 
+      {
+        join: {
+          alias: 'cliente',
+         leftJoinAndSelect: {
+           pessoa: 'cliente.pessoa',
+          },
+        }});
+  }
+
+  async readAll(params): Promise<Cliente[] | any> {
+    return await Cliente.find({join: {
+      alias: 'cliente',
+      leftJoinAndSelect: {
+        pessoa: 'cliente.pessoa',
+      },
+    }})
+  }
   async Create(body: any): Promise<Pessoa | any> {
     
     try {
