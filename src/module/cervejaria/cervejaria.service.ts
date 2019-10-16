@@ -8,6 +8,28 @@ import { Cervejaria } from '../../entity/cervejaria.entity';
 
 @Injectable()
 export class CervejariaService {
+
+  async readOne(id: number): Promise<Cervejaria>{
+    return await Cervejaria.findOne(
+      { id: id }, 
+      {
+        join: {
+          alias: 'cervejaria',
+         leftJoinAndSelect: {
+           pessoa: 'cervejaria.pessoa',
+          },
+        }});
+  }
+
+  async readAll(params): Promise<Cervejaria[] | any> {
+    return await Cervejaria.find({join: {
+      alias: 'cervejaria',
+      leftJoinAndSelect: {
+        pessoa: 'cervejaria.pessoa',
+      },
+    }})
+  }
+
   async Create(body: any): Promise<Pessoa | any> {
     
     try {

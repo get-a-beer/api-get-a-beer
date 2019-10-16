@@ -45,5 +45,30 @@ type clienteDTO = {
         res.status(HttpStatus.BAD_GATEWAY).send(err);
       }
     }
+
+    @Get('/cliente/:id')
+    async readOne(@Res() res, @Param() params) {
+      try {
+        const cliente = await this.clienteService.readOne(params.id)
+        if (cliente) {
+          res.status(HttpStatus.OK).send(cliente);
+        }
+        res
+          .status(HttpStatus.NOT_FOUND)
+          .json({"message":"Nenhum resultado encontrado!"});
+      } catch ( err) {
+        res.status(HttpStatus.BAD_GATEWAY).send(err); 
+      }
+    }
+    
+    @Get('/cliente/')
+    async readAll(@Res() res, @Param() params) {
+      try {
+        const clientes = await this.clienteService.readAll(params.id)
+        res.status(HttpStatus.OK).send(clientes);
+      } catch ( err) {
+        res.status(HttpStatus.BAD_GATEWAY).send(err); 
+      }
+    }
   }
   

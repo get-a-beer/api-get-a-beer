@@ -46,5 +46,30 @@ type cervejariaDTO = {
         res.status(HttpStatus.BAD_GATEWAY).send(err);
       }
     }
+
+    @Get('/cervejaria/:id')
+    async readOne(@Res() res, @Param() params) {
+      try {
+        const cervejaria = await this.cervejariaService.readOne(params.id)
+        if (cervejaria) {
+          res.status(HttpStatus.OK).send(cervejaria);
+        }
+        res
+          .status(HttpStatus.NOT_FOUND)
+          .json({"message":"Nenhum resultado encontrado!"});
+      } catch ( err) {
+        res.status(HttpStatus.BAD_GATEWAY).send(err); 
+      }
+    }
+    
+    @Get('/cervejaria/')
+    async readAll(@Res() res, @Param() params) {
+      try {
+        const cervejarias = await this.cervejariaService.readAll(params.id)
+        res.status(HttpStatus.OK).send(cervejarias);
+      } catch ( err) {
+        res.status(HttpStatus.BAD_GATEWAY).send(err); 
+      }
+    }
   }
   
