@@ -1,10 +1,12 @@
-import { Body, Controller, HttpStatus, Post, Res, Get, Param } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Res, Get, Param, Put} from '@nestjs/common';
 import { CervejariaDTO } from '../../dto/cervejaria.dto';
 import { Usuario } from '../../entity/usuario.entity';
 import { CervejariaService } from './cervejaria.service';
 import { Cervejaria } from '../../entity/cervejaria.entity';
 import { Pessoa } from '../../entity/pessoa.entity';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+var _ = require('lodash');
+
 
 @Controller()
 export class CervejariaController {
@@ -36,7 +38,7 @@ export class CervejariaController {
       cervejaria.pessoa = pessoa;
       cervejaria.cnpj = cervejariaDTO.cnpj;
 
-      const data = await this.cervejariaService.Create(cervejaria)
+      const data = await this.cervejariaService.createOrUpdate(cervejaria)
 
       res.status(HttpStatus.OK).json({ data: data });
 
@@ -68,6 +70,36 @@ export class CervejariaController {
       res.status(HttpStatus.OK).send(cervejarias);
     } catch (err) {
       res.status(HttpStatus.BAD_GATEWAY).send(err);
+    }
+  }
+
+  @Put('/cervejaria/:id')
+  async update(@Res() res, @Body() cervejariaDTO: CervejariaDTO,@Param() params) {
+    try {
+      const cervejaria = await this.cervejariaService.readOne(params.id)
+
+      if (cervejaria) {
+        const {pessoa} = cervejaria
+        const {usuario} = pessoa
+
+       _.merge(usuario, _.pickBy({usuario: cervejariaDTO.nomeUsuario, senha: cervejariaDTO.senha}))
+
+       _.merge(pessoa, _.pickBy({telefone: cervejariaDTO.telefone, email: cervejariaDTO.email}))
+
+       _.merge(cervejaria, _.pickBy({
+         cnpj: cervejariaDTO.cnpj, } 
+       ))
+
+        const clienteUpdate = await this.cervejariaService.createOrUpdate(cervejaria)
+        res.status(HttpStatus.OK).send(clienteUpdate);
+      } else {
+        res
+        .status(HttpStatus.NOT_FOUND)
+        .json({"message":"Nenhum resultado encontrado!"});
+      }
+     
+    } catch ( err) {
+      res.status(HttpStatus.BAD_GATEWAY).send(err); 
     }
   }
 }

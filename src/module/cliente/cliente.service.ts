@@ -51,7 +51,7 @@ export class ClienteService {
 */
 @Injectable()
 export class ClienteService {
-  async Create(cliente: Cliente): Promise<Cliente> {
+  async createOrUpdate(cliente: Cliente): Promise<Cliente> {
     try {
       return Cliente.save(cliente);
     
@@ -66,14 +66,8 @@ export class ClienteService {
 
   async readOne(id: number): Promise<Cliente>{
     return await Cliente.findOne(
-      { id: id }, 
-      {
-        join: {
-          alias: 'cliente',
-         leftJoinAndSelect: {
-           pessoa: 'cliente.pessoa',
-          },
-        }});
+      { id: id }
+    );
   }
 
   async readAll(params): Promise<Cliente[] | any> {
