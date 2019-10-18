@@ -23,7 +23,7 @@ export class Pessoa extends BaseEntity {
     @JoinColumn()
     endereco: Endereco;
 
-    @OneToOne(type => Usuario, { cascade: true })
+    @OneToOne(type => Usuario, { cascade: true, eager: true })
     @JoinColumn()
     usuario: Usuario;
 

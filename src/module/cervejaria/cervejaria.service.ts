@@ -30,7 +30,7 @@ export class CervejariaService {
   }
 
     
-  async Create(cervejaria: Cervejaria): Promise<Cervejaria> { 
+  async createOrUpdate(cervejaria: Cervejaria): Promise<Cervejaria> { 
     try {
       return Cervejaria.save(cervejaria)
     } catch (err) {
