@@ -15,7 +15,7 @@ import {
   export class PessoaController {
     constructor() {}
   
-
+    /*
     @Post('/pessoa')
     async createOne(@Res() res, @Body() body: any) {
       try {
@@ -23,5 +23,6 @@ import {
         res.status(HttpStatus.BAD_GATEWAY).send(err);
       }
     }
+    */
   }
   

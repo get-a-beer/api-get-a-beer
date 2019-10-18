@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, BaseEntity } from 'typeorm';
-import { Pessoa } from './pessoa.entity'
+import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Pessoa } from './pessoa.entity';
 
 
 @Entity()
@@ -11,7 +11,7 @@ export class Cervejaria extends BaseEntity {
     @Column()
     cnpj: string;
 
-    @OneToOne(type => Pessoa, pessoa => pessoa.cervejaria)
+    @OneToOne(type => Pessoa, { cascade: true })
     @JoinColumn()
     pessoa: Pessoa;
 }
