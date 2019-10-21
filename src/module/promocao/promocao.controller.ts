@@ -2,9 +2,9 @@ import { Controller, Post, Res, Body, HttpStatus, Param, Get } from '@nestjs/com
 import { PromocaoService } from './promocao.service';
 import { PromocaoModule } from './promocao.mudule';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { PromocaoDTO } from 'src/dto/promocao.dto';
-import { Promocao } from 'src/entity/promocao.entity';
-import { Produto } from 'src/entity/produto.entity';
+import { PromocaoDTO } from '../../dto/promocao.dto';
+import { Promocao } from '../../entity/promocao.entity';
+import { Produto } from '../../entity/produto.entity';
 
   
 @Controller()

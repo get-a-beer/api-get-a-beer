@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Cerveja } from "src/entity/cerveja.entity";
+import { Cerveja } from "../../entity/cerveja.entity";
 
 @Injectable()
 export class CervejaService {

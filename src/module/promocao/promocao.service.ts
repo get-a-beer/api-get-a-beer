@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Promocao } from "src/entity/promocao.entity";
+import { Promocao } from "../../entity/promocao.entity";
 
 @Injectable()
 export class PromocaoService {
