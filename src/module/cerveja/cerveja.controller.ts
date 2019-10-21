@@ -1,9 +1,9 @@
 import { Body, Controller, HttpStatus, Post, Res, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiImplicitParam } from '@nestjs/swagger';
-import { CervejaDTO } from 'src/dto/cerveja.dto';
-import { Cerveja } from 'src/entity/cerveja.entity';
-import { Cervejaria } from 'src/entity/cervejaria.entity';
-import { Produto } from 'src/entity/produto.entity';
+import { CervejaDTO } from '../../dto/cerveja.dto';
+import { Cerveja } from '../../entity/cerveja.entity';
+import { Cervejaria } from '../../entity/cervejaria.entity';
+import { Produto } from '../../entity/produto.entity';
 import { CervejaService } from './cerveja.service';
  
 @Controller()
