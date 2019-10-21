@@ -7,6 +7,8 @@ import { CervejariaModule } from './module/cervejaria/cervejaria.module';
 import { ClienteModule } from './module/cliente/cliente.module';
 import { PessoaModule } from './module/pessoa/pessoa.module';
 import { CervejaModule } from './module/cerveja/cerveja.module';
+import { Promocao } from './entity/promocao.entity';
+import { PromocaoModule } from './module/promocao/promocao.mudule';
 
 
 @Module({
@@ -17,6 +19,7 @@ import { CervejaModule } from './module/cerveja/cerveja.module';
     CervejariaModule, 
     AuthModule,
     CervejaModule, 
+    PromocaoModule
   ],
   controllers: [AppController],
   providers: [AppService],

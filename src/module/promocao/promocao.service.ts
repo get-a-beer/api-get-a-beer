@@ -1,12 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { Cerveja } from "src/entity/cerveja.entity";
+import { Promocao } from "src/entity/promocao.entity";
 
 @Injectable()
-export class CervejaService {
-    
-  async createOrUpdate(cerveja: Cerveja): Promise<Cerveja> {
+export class PromocaoService {
+    async createOrUpdate(promocao: Promocao): Promise<Promocao> {
         try {
-          return Cerveja.save(cerveja);
+          return Promocao.save(promocao);
 
         } catch (err) {
           throw new Error(
@@ -17,17 +16,16 @@ export class CervejaService {
         }
       }
 
-    async readOne(id: number): Promise<Cerveja>{
-        return  Cerveja.findOne(
+    async readOne(id: number): Promise<Promocao>{
+        return  Promocao.findOne(
             { id: id }, 
             {relations: ["produto"] 
         });
     }
 
-    async readAll(params): Promise<Cerveja[] | any> {
-        return  Cerveja.find(
+    async readAll(params): Promise<Promocao[] | any> {
+        return  Promocao.find(
             { relations: ["produto"] }
         );
     }
-    
 }
