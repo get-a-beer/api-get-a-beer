@@ -11,13 +11,13 @@ export class Pessoa extends BaseEntity {
     id: number;
 
     @Column()
-    nome: String
+    nome: string
 
     @Column()
-    telefone: String
+    telefone: string
 
     @Column()
-    email: String
+    email: string
 
     @OneToOne(type => Endereco, endereco => endereco.pessoa)
     @JoinColumn()

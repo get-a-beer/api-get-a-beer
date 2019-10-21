@@ -16,7 +16,7 @@ export class Cliente extends BaseEntity {
     @Column()
     dataNascimento: Date;
 
-    @OneToOne(type => Pessoa, { cascade: true ,eager: true})
+    @OneToOne(type => Pessoa, { cascade: true, eager: true})
     @JoinColumn()
     pessoa: Pessoa;
 
