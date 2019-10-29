@@ -1,9 +1,6 @@
 import { Controller } from '@nestjs/common';
 
-  
-  @Controller()
-  export class PessoaController {
-    constructor() {}
-    
-  }
-  
+@Controller()
+export class PessoaController {
+  constructor() {}
+}

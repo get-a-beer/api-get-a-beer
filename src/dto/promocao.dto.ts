@@ -1,7 +1,7 @@
-import { ApiModelProperty } from "@nestjs/swagger";
-import { IsDefined } from "class-validator";
+import { ApiModelProperty } from '@nestjs/swagger';
+import { IsDefined } from 'class-validator';
 
-export class PromocaoDTO{
+export class PromocaoDTO {
     @ApiModelProperty({ required: true, description: 'Id Referente ao Produto no qual sera aplicado o cupom de desconto' })
     @IsDefined()
     readonly idProduto: number;

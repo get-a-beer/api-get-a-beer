@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import * as cors from 'cors'
+import * as cors from 'cors';
 
 const pacote = require( '../package.json' );
 async function bootstrap() {
@@ -20,7 +20,7 @@ async function bootstrap() {
   SwaggerModule.setup('', app, document);
   app.use(cors());
   await app.listen(parseInt( process.env.PORT ) || 3000);
-  
+
 }
 
 bootstrap();

@@ -1,14 +1,12 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Pessoa } from '../../entity/pessoa.entity';
 import { Cliente } from '../../entity/cliente.entity';
-
 
 /*
 @Injectable()
 export class ClienteService {
   async readOne(id: number): Promise<Cliente>{
     return await Cliente.findOne(
-      { id: id }, 
+      { id: id },
       {
         join: {
           alias: 'cliente',
@@ -27,7 +25,7 @@ export class ClienteService {
     }})
   }
   async Create(body: any): Promise<Pessoa | any> {
-    
+
     try {
       const {cpf, dataNascimento, pessoa} = body
       const cliente = new Cliente()
@@ -54,7 +52,7 @@ export class ClienteService {
   async createOrUpdate(cliente: Cliente): Promise<Cliente> {
     try {
       return Cliente.save(cliente);
-    
+
     } catch (err) {
       throw new Error(
         `Erro ao cadastrar pessoa \n Erro: ${err.name}\n Mensagem: ${
@@ -64,9 +62,9 @@ export class ClienteService {
     }
   }
 
-  async readOne(id: number): Promise<Cliente>{
+  async readOne(id: number): Promise<Cliente> {
     return await Cliente.findOne(
-      { id: id }
+      { id },
     );
   }
 
@@ -76,7 +74,7 @@ export class ClienteService {
       leftJoinAndSelect: {
         pessoa: 'cliente.pessoa',
       },
-    }})
+    }});
   }
 
 }

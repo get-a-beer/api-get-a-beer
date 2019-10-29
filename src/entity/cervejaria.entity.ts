@@ -2,10 +2,9 @@ import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGen
 import { Pessoa } from './pessoa.entity';
 import { Produto } from './produto.entity';
 
-
 @Entity()
 export class Cervejaria extends BaseEntity {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 

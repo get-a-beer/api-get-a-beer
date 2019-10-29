@@ -3,7 +3,7 @@ import { Pessoa } from './pessoa.entity';
 
 @Entity()
 export class Cliente extends BaseEntity {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 

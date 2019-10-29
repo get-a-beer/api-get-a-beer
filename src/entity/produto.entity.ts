@@ -2,11 +2,9 @@ import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, OneToMan
 import { Cervejaria } from './cervejaria.entity';
 import { Promocao } from './promocao.entity';
 
-
-
 @Entity()
 export class Produto extends BaseEntity {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -17,7 +15,7 @@ export class Produto extends BaseEntity {
     valor: number;
 
     @Column()
-    qtdDisponivel: number;    
+    qtdDisponivel: number;
 
     @ManyToOne(type => Cervejaria, cerverjaria => cerverjaria.produtos)
     cervejaria: Cervejaria;
