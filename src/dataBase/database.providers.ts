@@ -1,5 +1,5 @@
 import { createConnection } from 'typeorm';
-import { DataBaseConfig } from '../config/database.config'
+import { DataBaseConfig } from '../config/database.config';
 
 const config = new DataBaseConfig;
 

@@ -2,22 +2,20 @@ import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColum
 import { Endereco } from './endereco.entity';
 import { Usuario } from './usuario.entity';
 
-
-
 @Entity()
 export class Pessoa extends BaseEntity {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    nome: string
+    nome: string;
 
     @Column()
-    telefone: string
+    telefone: string;
 
     @Column()
-    email: string
+    email: string;
 
     @OneToOne(type => Endereco, endereco => endereco.pessoa)
     @JoinColumn()

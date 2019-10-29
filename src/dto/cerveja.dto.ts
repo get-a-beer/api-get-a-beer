@@ -1,9 +1,9 @@
-import { ApiModelProperty } from "@nestjs/swagger";
-import { IsDefined } from "class-validator";
-import { ProdutoDTO } from "./produto.dto";
+import { ApiModelProperty } from '@nestjs/swagger';
+import { IsDefined } from 'class-validator';
+import { ProdutoDTO } from './produto.dto';
 
-export class CervejaDTO extends ProdutoDTO{
-    
+export class CervejaDTO extends ProdutoDTO {
+
     @ApiModelProperty({ required: false, description: 'Temperatura da cerveja' })
     @IsDefined()
     readonly temperatura: number;
@@ -24,4 +24,3 @@ export class CervejaDTO extends ProdutoDTO{
     @IsDefined()
     readonly idCervejaria: number;
 }
-    

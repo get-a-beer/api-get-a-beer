@@ -10,19 +10,18 @@ import { CervejaModule } from './module/cerveja/cerveja.module';
 import { Promocao } from './entity/promocao.entity';
 import { PromocaoModule } from './module/promocao/promocao.mudule';
 
-
 @Module({
-  imports: [ 
-    DatabaseModule, 
-    PessoaModule, 
-    ClienteModule, 
-    CervejariaModule, 
+  imports: [
+    DatabaseModule,
+    PessoaModule,
+    ClienteModule,
+    CervejariaModule,
     AuthModule,
-    CervejaModule, 
-    PromocaoModule
+    CervejaModule,
+    PromocaoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
-  exports: [PessoaModule]
+  exports: [PessoaModule],
 })
 export class AppModule {}

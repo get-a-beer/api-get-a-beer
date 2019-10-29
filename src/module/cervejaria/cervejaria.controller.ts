@@ -5,8 +5,7 @@ import { CervejariaService } from './cervejaria.service';
 import { Cervejaria } from '../../entity/cervejaria.entity';
 import { Pessoa } from '../../entity/pessoa.entity';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-var _ = require('lodash');
-
+const _ = require('lodash');
 
 @Controller()
 export class CervejariaController {
@@ -15,7 +14,7 @@ export class CervejariaController {
   @Post('/cervejaria')
   @ApiOperation({
     title: 'Cria cervejaria',
-    description: 'Cria uma nova cervejaria'
+    description: 'Cria uma nova cervejaria',
   })
   @ApiResponse({
     status: 200,
@@ -38,9 +37,9 @@ export class CervejariaController {
       cervejaria.pessoa = pessoa;
       cervejaria.cnpj = cervejariaDTO.cnpj;
 
-      const data = await this.cervejariaService.createOrUpdate(cervejaria)
+      const data = await this.cervejariaService.createOrUpdate(cervejaria);
 
-      res.status(HttpStatus.OK).json({ data: data });
+      res.status(HttpStatus.OK).json({ data });
 
     } catch (err) {
       res.status(HttpStatus.BAD_GATEWAY).send(err);
@@ -50,13 +49,13 @@ export class CervejariaController {
   @Get('/cervejaria/:id')
   async readOne(@Res() res, @Param() params) {
     try {
-      const cervejaria = await this.cervejariaService.readOne(params.id)
+      const cervejaria = await this.cervejariaService.readOne(params.id);
       if (cervejaria) {
         res.status(HttpStatus.OK).send({ data: cervejaria });
       } else {
         res
           .status(HttpStatus.NOT_FOUND)
-          .json({ "message": "Nenhum resultado encontrado!" });
+          .json({ message: 'Nenhum resultado encontrado!' });
       }
     } catch (err) {
       res.status(HttpStatus.BAD_GATEWAY).send(err);
@@ -66,7 +65,7 @@ export class CervejariaController {
   @Get('/cervejaria/')
   async readAll(@Res() res, @Param() params) {
     try {
-      const cervejarias = await this.cervejariaService.readAll(params.id)
+      const cervejarias = await this.cervejariaService.readAll(params.id);
       res.status(HttpStatus.OK).send(cervejarias);
     } catch (err) {
       res.status(HttpStatus.BAD_GATEWAY).send(err);
@@ -74,33 +73,32 @@ export class CervejariaController {
   }
 
   @Put('/cervejaria/:id')
-  async update(@Res() res, @Body() cervejariaDTO: CervejariaDTO,@Param() params) {
+  async update(@Res() res, @Body() cervejariaDTO: CervejariaDTO, @Param() params) {
     try {
-      const cervejaria = await this.cervejariaService.readOne(params.id)
+      const cervejaria = await this.cervejariaService.readOne(params.id);
 
       if (cervejaria) {
-        const {pessoa} = cervejaria
-        const {usuario} = pessoa
+        const {pessoa} = cervejaria;
+        const {usuario} = pessoa;
 
-       _.merge(usuario, _.pickBy({usuario: cervejariaDTO.nomeUsuario, senha: cervejariaDTO.senha}))
+        _.merge(usuario, _.pickBy({usuario: cervejariaDTO.nomeUsuario, senha: cervejariaDTO.senha}));
 
-       _.merge(pessoa, _.pickBy({telefone: cervejariaDTO.telefone, email: cervejariaDTO.email}))
+        _.merge(pessoa, _.pickBy({telefone: cervejariaDTO.telefone, email: cervejariaDTO.email}));
 
-       _.merge(cervejaria, _.pickBy({
-         cnpj: cervejariaDTO.cnpj, } 
-       ))
+        _.merge(cervejaria, _.pickBy({
+         cnpj: cervejariaDTO.cnpj },
+       ));
 
-        const clienteUpdate = await this.cervejariaService.createOrUpdate(cervejaria)
+        const clienteUpdate = await this.cervejariaService.createOrUpdate(cervejaria);
         res.status(HttpStatus.OK).send(clienteUpdate);
       } else {
         res
         .status(HttpStatus.NOT_FOUND)
-        .json({"message":"Nenhum resultado encontrado!"});
+        .json({message: 'Nenhum resultado encontrado!'});
       }
-     
+
     } catch ( err) {
-      res.status(HttpStatus.BAD_GATEWAY).send(err); 
+      res.status(HttpStatus.BAD_GATEWAY).send(err);
     }
   }
 }
-

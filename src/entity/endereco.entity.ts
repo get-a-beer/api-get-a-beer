@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column , OneToOne, JoinColumn} from 'typeorm';
 
-import {Pessoa} from './pessoa.entity'
+import {Pessoa} from './pessoa.entity';
 
 @Entity()
 export class Endereco {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -25,6 +25,6 @@ export class Endereco {
 
     @OneToOne(type => Pessoa, pessoa => pessoa.endereco)
     @JoinColumn()
-    pessoa: Pessoa
+    pessoa: Pessoa;
 
 }

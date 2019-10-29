@@ -1,16 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Cervejaria } from '../../entity/cervejaria.entity';
 
-
-
-
-
 @Injectable()
 export class CervejariaService {
 
-  async readOne(id: number): Promise<Cervejaria>{
+  async readOne(id: number): Promise<Cervejaria> {
     return  Cervejaria.findOne(
-      { id: id }, 
+      { id },
       {
         join: {
           alias: 'cervejaria',
@@ -26,13 +22,12 @@ export class CervejariaService {
       leftJoinAndSelect: {
         pessoa: 'cervejaria.pessoa',
       },
-    }})
+    }});
   }
 
-    
-  async createOrUpdate(cervejaria: Cervejaria): Promise<Cervejaria> { 
+  async createOrUpdate(cervejaria: Cervejaria): Promise<Cervejaria> {
     try {
-      return Cervejaria.save(cervejaria)
+      return Cervejaria.save(cervejaria);
     } catch (err) {
       throw new Error(
         `Erro ao cadastrar pessoa \n Erro: ${err.name}\n Mensagem: ${
@@ -41,5 +36,4 @@ export class CervejariaService {
       );
     }
   }
-
 }

@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { Promocao } from "../../entity/promocao.entity";
+import { Injectable } from '@nestjs/common';
+import { Promocao } from '../../entity/promocao.entity';
 
 @Injectable()
 export class PromocaoService {
@@ -16,16 +16,16 @@ export class PromocaoService {
         }
       }
 
-    async readOne(id: number): Promise<Promocao>{
+    async readOne(id: number): Promise<Promocao> {
         return  Promocao.findOne(
-            { id: id }, 
-            {relations: ["produto"] 
+            { id },
+            {relations: ['produto'],
         });
     }
 
     async readAll(params): Promise<Promocao[] | any> {
         return  Promocao.find(
-            { relations: ["produto"] }
+            { relations: ['produto'] },
         );
     }
 }

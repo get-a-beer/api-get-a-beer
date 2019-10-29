@@ -3,7 +3,7 @@ import { Produto } from './produto.entity';
 
 @Entity()
 export class Promocao extends BaseEntity {
-    
+
     @PrimaryGeneratedColumn()
     id: number;
 
