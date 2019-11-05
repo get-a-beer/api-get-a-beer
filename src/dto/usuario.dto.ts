@@ -4,7 +4,7 @@ import {IsEmail, IsAlpha, IsDefined} from "class-validator";
 export class UsuarioDTO{
     @ApiModelProperty({ required: false, description: 'Nome de Usuario' })
     @IsDefined()
-    readonly nomeUsuario: string
+    readonly usuario: string
     
     @ApiModelProperty({ required: false, description: 'Senha' })
     @IsDefined()
