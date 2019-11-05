@@ -89,7 +89,7 @@ var _ = require('lodash');
           const {pessoa} = cliente
           const {usuario} = pessoa
 
-         _.merge(usuario, _.pickBy({usuario: clienteDTO.nomeUsuario, senha: clienteDTO.senha}))
+         _.merge(usuario, _.pickBy({usuario: clienteDTO.usuario, senha: clienteDTO.senha}))
 
          _.merge(pessoa, _.pickBy({telefone: clienteDTO.telefone, email: clienteDTO.email}))
 
