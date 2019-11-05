@@ -29,7 +29,7 @@ var _ = require('lodash');
 
         const usuario = new Usuario();
         usuario.senha = clienteDTO.senha;
-        usuario.usuario = clienteDTO.nomeUsuario;
+        usuario.usuario = clienteDTO.usuario;
         
         const pessoa = new Pessoa();
         pessoa.usuario = usuario;
