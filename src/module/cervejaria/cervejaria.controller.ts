@@ -26,7 +26,7 @@ export class CervejariaController {
 
       const usuario = new Usuario();
       usuario.senha = cervejariaDTO.senha;
-      usuario.usuario = cervejariaDTO.nomeUsuario;
+      usuario.usuario = cervejariaDTO.usuario;
 
       const pessoa = new Pessoa();
       pessoa.usuario = usuario;
