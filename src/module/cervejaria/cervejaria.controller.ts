@@ -82,7 +82,7 @@ export class CervejariaController {
         const {pessoa} = cervejaria
         const {usuario} = pessoa
 
-       _.merge(usuario, _.pickBy({usuario: cervejariaDTO.nomeUsuario, senha: cervejariaDTO.senha}))
+       _.merge(usuario, _.pickBy({usuario: cervejariaDTO.usuario, senha: cervejariaDTO.senha}))
 
        _.merge(pessoa, _.pickBy({telefone: cervejariaDTO.telefone, email: cervejariaDTO.email}))
 
