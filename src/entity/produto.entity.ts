@@ -19,6 +19,9 @@ export class Produto extends BaseEntity {
     @Column()
     qtdDisponivel: number;    
 
+    @Column({default: null})
+    descricao: string
+
     @ManyToOne(type => Cervejaria, cerverjaria => cerverjaria.produtos)
     cervejaria: Cervejaria;
 
