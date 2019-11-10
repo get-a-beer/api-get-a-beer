@@ -1,5 +1,9 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+enum roles {
+    cliente = "cliente",
+    cervejaria = "cervejaria"
+}
 
 @Entity()
 export class Usuario extends BaseEntity{
@@ -12,5 +16,8 @@ export class Usuario extends BaseEntity{
 
     @Column()
     senha: string;
+
+    @Column('text',{default: null})
+    role: roles
 
 }

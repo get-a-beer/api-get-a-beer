@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Res, Get, Param } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Res, Get, Param, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiImplicitParam } from '@nestjs/swagger';
 import { CervejaDTO } from '../../dto/cerveja.dto';
 import { Cerveja } from '../../entity/cerveja.entity';
@@ -74,9 +74,9 @@ export class CervejaController {
   }
 
   @Get('/cerveja/')
-  async readAll(@Res() res, @Param('id') idCerveja) {
+  async readAll(@Res() res, @Param('id') idCerveja, @Query() query) {
     try {
-      const cervejas = await this.cervejaService.readAll(idCerveja)
+      const cervejas = await this.cervejaService.readAll(query)
       res.status(HttpStatus.OK).send(cervejas);
     } catch (err) {
       res.status(HttpStatus.BAD_GATEWAY).send(err);
