@@ -1,5 +1,5 @@
 import { Controller, Post, Res, Body, HttpStatus } from '@nestjs/common';
-import { BoletoReqDTO } from 'src/dto/boleto.dto';
+import { BoletoReqDTO } from '../../dto/boleto.dto';
 import { PagamentoService } from './pagamento.service';
 
   @Controller()
