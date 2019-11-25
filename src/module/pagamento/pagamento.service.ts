@@ -1,8 +1,7 @@
 import { Injectable, HttpService } from '@nestjs/common';
-import { BoletoResDTO, BoletoReqDTO } from '../../dto/boleto.dto';
+import { BoletoReqDTO, BoletoResDTO } from '../../dto/boleto.dto';
 import { PagSeguroConfig } from '../../config/pagseguro.config';
-import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
+import * as axios from 'axios'
 
 @Injectable()
 export class PagamentoService {
@@ -10,8 +9,8 @@ export class PagamentoService {
 
   constructor(private readonly http: HttpService){}
 
-  boletoPayment(body: BoletoReqDTO): Observable<AxiosResponse<BoletoResDTO | any>> {
-    return this.http.post(this.pagConfig.url, body)
+  async boletoPayment(body: BoletoReqDTO): Promise<BoletoResDTO | any> {
+    return await axios.default.post(this.pagConfig.url, body)
   }
 
 }
