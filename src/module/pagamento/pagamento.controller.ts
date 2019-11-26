@@ -7,12 +7,11 @@ import { PagamentoService } from './pagamento.service';
     constructor(private readonly pagService: PagamentoService) {}
     
     @Post('boleto')
-    async createOne(@Res() res, @Body() boletoDto) {
+    async createOne(@Res() res, @Body() boletoDto: BoletoReqDTO) {
       try{
         const data = await this.pagService.boletoPayment(boletoDto)
         let response: BoletoResDTO = data.data
-        console.log(response)
-        res.status(HttpStatus.OK).json({data: data})
+        res.status(HttpStatus.OK).json({data: response})
       }
       catch(err){
         res.status(HttpStatus.BAD_REQUEST).send(err);

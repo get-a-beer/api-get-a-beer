@@ -7,8 +7,6 @@ import * as axios from 'axios'
 export class PagamentoService {
   private pagConfig: PagSeguroConfig = new PagSeguroConfig();
 
-  constructor(private readonly http: HttpService){}
-
   async boletoPayment(body: BoletoReqDTO): Promise<BoletoResDTO | any> {
     return await axios.default.post(this.pagConfig.url, body)
   }
