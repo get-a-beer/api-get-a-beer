@@ -1,5 +1,4 @@
 export class BoletoReqDTO {
-
     firstDueDate: string;
     numberOfPayments: string;
     periodicity: string;
@@ -17,7 +16,6 @@ export class BoletoReqDTO {
         name: string, 
         email: string
     }
-
 }
 
 export class BoletoResDTO {
@@ -30,5 +28,4 @@ export class BoletoResDTO {
             dueDate: string
         }
     ]
-
 }
