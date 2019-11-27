@@ -8,9 +8,9 @@ import { Cervejaria } from '../../entity/cervejaria.entity';
 @Injectable()
 export class CervejariaService {
 
-  async readOne(id: number): Promise<Cervejaria>{
+  async readOne(where: any): Promise<Cervejaria>{
     return  Cervejaria.findOne(
-      { id: id }, 
+      where, 
       {
         join: {
           alias: 'cervejaria',

@@ -8,6 +8,7 @@ import { UsuarioModule } from '../usuario/usuario.module'
 @Module({
   controllers: [ClienteController],
   providers: [ClienteService],
-  imports: [PessoaModule, UsuarioModule]
+  imports: [PessoaModule, UsuarioModule],
+  exports: [ClienteService]
 })
 export class ClienteModule {}

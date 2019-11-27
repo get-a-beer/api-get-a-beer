@@ -8,6 +8,7 @@ import {CervejariaService} from './cervejaria.service'
 @Module({
   controllers: [CervejariaController],
   providers: [CervejariaService],
-  imports: [PessoaModule, UsuarioModule]
+  imports: [PessoaModule, UsuarioModule],
+  exports: [CervejariaService]
 })
 export class CervejariaModule {}

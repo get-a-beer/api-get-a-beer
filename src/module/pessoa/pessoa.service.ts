@@ -26,5 +26,8 @@ export class PessoaService {
       );
     }
   }
+  async readOne(where: any): Promise<Pessoa | any> {
+    return Pessoa.findOne(where);
+  }
 
 }

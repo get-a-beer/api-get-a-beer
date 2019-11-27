@@ -55,7 +55,7 @@ var _ = require('lodash');
     @Get('/cliente/:id')
     async readOne(@Res() res, @Param() params) {
       try {
-        const cliente = await this.clienteService.readOne(params.id)
+        const cliente = await this.clienteService.readOne({id: params.id})
         if (cliente) {
           
           res.status(HttpStatus.OK).send(cliente);

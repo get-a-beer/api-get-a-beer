@@ -64,9 +64,9 @@ export class ClienteService {
     }
   }
 
-  async readOne(id: number): Promise<Cliente>{
+  async readOne(where: any): Promise<Cliente>{
     return await Cliente.findOne(
-      { id: id }
+      where
     );
   }
 

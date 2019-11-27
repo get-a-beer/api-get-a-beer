@@ -50,7 +50,7 @@ export class CervejariaController {
   @Get('/cervejaria/:id')
   async readOne(@Res() res, @Param() params) {
     try {
-      const cervejaria = await this.cervejariaService.readOne(params.id)
+      const cervejaria = await this.cervejariaService.readOne({id: params.id})
       if (cervejaria) {
         res.status(HttpStatus.OK).send({ data: cervejaria });
       } else {
