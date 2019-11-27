@@ -17,7 +17,6 @@ export class BoletoReqDTO {
         name: string, 
         email: string
     }
-
 }
 
 export class BoletoResDTO {
@@ -30,5 +29,4 @@ export class BoletoResDTO {
             dueDate: string
         }
     ]
-
 }
