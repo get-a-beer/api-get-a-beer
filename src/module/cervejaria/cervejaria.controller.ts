@@ -6,6 +6,7 @@ import { Cervejaria } from '../../entity/cervejaria.entity';
 import { Pessoa } from '../../entity/pessoa.entity';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 var _ = require('lodash');
+var md5 = require('md5');
 
 
 @Controller()
@@ -25,7 +26,7 @@ export class CervejariaController {
     try {
 
       const usuario = new Usuario();
-      usuario.senha = cervejariaDTO.senha;
+      usuario.senha = md5(cervejariaDTO.senha);
       usuario.usuario = cervejariaDTO.usuario;
 
       const pessoa = new Pessoa();

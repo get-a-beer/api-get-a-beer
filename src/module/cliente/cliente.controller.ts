@@ -6,6 +6,7 @@ import { Pessoa } from '../../entity/pessoa.entity';
 import { Usuario } from '../../entity/usuario.entity';
 import { ClienteService } from './cliente.service';
 var _ = require('lodash');
+var md5 = require('md5');
 
 
 
@@ -28,7 +29,7 @@ var _ = require('lodash');
       try {
 
         const usuario = new Usuario();
-        usuario.senha = clienteDTO.senha;
+        usuario.senha = md5(clienteDTO.senha);
         usuario.usuario = clienteDTO.usuario;
         
         const pessoa = new Pessoa();
